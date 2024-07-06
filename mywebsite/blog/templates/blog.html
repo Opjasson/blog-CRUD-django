@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div class="w-4/5 m-auto mt-5 flex justify-around flex-wrap">
+    {% for postingan in posts %}
+    <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 text-center">
+    
+        <h1 class="text-4xl font-extrabold text-blue-600">{{forloop.counter}}. {{postingan.judul}}</h1>
+        <p>{{postingan.body}}</p>
+        <h1 class="mb-5">{{postingan.category}}</h1>
+
+        <a href="{% url 'blog:delete' postingan.id %}" class="py-1 px-6 me-2 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Delete</a>
+
+        <a href="{% url 'blog:update' postingan.id %}" class="py-1 px-6 me-2 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Update</a> 
+
+    </div>      
+{% endfor %}
+</div>
+{% endblock content %}
